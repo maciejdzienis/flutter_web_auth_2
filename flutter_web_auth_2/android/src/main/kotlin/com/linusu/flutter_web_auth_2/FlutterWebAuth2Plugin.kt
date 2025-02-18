@@ -45,11 +45,10 @@ class FlutterWebAuth2Plugin(
                 val callbackUrlScheme = call.argument<String>("callbackUrlScheme")!!
                 val options = call.argument<Map<String, Any>>("options")!!
 
-                val cookieManager = CookieManager.getInstance()
-                cookieManager.setAcceptCookie(false)
-
                 callbacks[callbackUrlScheme] = resultCallback
-                val intent = CustomTabsIntent.Builder().build()
+                val intent = CustomTabsIntent.Builder()
+                    .setEphemeralBrowsingEnabled(true)
+                    .build()
                 val keepAliveIntent = Intent(context, KeepAliveService::class.java)
 
                 intent.intent.addFlags(options["intentFlags"] as Int)
