@@ -90,12 +90,7 @@ class FlutterWebAuth2Plugin(
         if (targetPackage != null) {
             return targetPackage
         }
-
-        // Check default browser
-        val defaultBrowserSupported = CustomTabsClient.getPackageName(context!!, emptyList<String>()) != null
-        if (defaultBrowserSupported) {
-            return null;
-        }
+        
         // Check installed browser
         val allBrowsers = getInstalledBrowsers()
         targetPackage = allBrowsers.firstOrNull { isSupportCustomTabs(it) }
