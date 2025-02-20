@@ -77,7 +77,7 @@ class FlutterWebAuth2Plugin(
      * Find Support CustomTabs Browser.
      *
      * Priority:
-     * 1. Chrome
+     * 1. Chrome (Beta, Dev, Official)
      * 2. Custom Browser Order
      * 3. default Browser
      * 4. Installed Browser
@@ -120,9 +120,9 @@ class FlutterWebAuth2Plugin(
 
         val allBrowser = viewIntentHandlers.map { it.activityInfo.packageName }.sortedWith(compareBy {
             if (setOf(
-                    "com.android.chrome",
                     "com.chrome.beta",
                     "com.chrome.dev",
+                    "com.android.chrome",
                     "com.microsoft.emmx"
                 ).contains(it)
             ) {
